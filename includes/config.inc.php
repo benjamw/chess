@@ -1,0 +1,178 @@
+<?php
+
+/* Database settings */
+/* ----------------- */
+	$CFG_HOSTNAME = 'localhost';
+	$CFG_USERNAME = 'username';
+	$CFG_PASSWORD = 'password';
+	$CFG_DATABASE = 'database';
+
+
+/* Table settings */
+/* -------------- */
+	$prefix = 'wc2_'; // table name prefix
+
+	define('T_CHAT'      , $prefix . 'chat'); // the in-game chat/personal notes table
+	define('T_GAME'      , $prefix . 'game'); // the game data table
+	define('T_HISTORY'   , $prefix . 'history'); // the moves history table
+	define('T_MESSAGE'   , $prefix . 'message'); // the game message table
+	define('T_PLAYER'    , $prefix . 'player'); // the player data table
+	define('T_STAT'      , $prefix . 'stat'); // the stats table
+	define('T_TALK'      , $prefix . 'talk'); // the player messaging table
+	define('T_TALK_GLUE' , $prefix . 'talk_glue'); // the message glue table
+
+
+/* Root Admin setting */
+/* ------------------ */
+	$CFG_ROOT_ADMIN = 'yourname'; // Permanent admin username (case-sensitive)
+
+
+/* Server / Site settings */
+/* ---------------------- */
+
+	/*
+		  --- PLEASE READ ---
+
+		this first setting is the color theme for your webchess installation
+		look inside the /css directory and you will find several css files with a
+		filename like c_{color_name}.css.  pick one, and enter that name here, or you can easily
+		create your own, using one of the included styles as a guide.
+		if you do create your own, please post it to my forum at http://iohelix.net/forum/
+		so that others may have access to it, and i may even include it with the next release.
+	*/
+
+	$CFG_COLOR_CSS      = 'c_red_black.css'; // the name of the color css file you wish to use (in the /css directory)
+
+	$CFG_MAINPAGE       = 'http://yoursite.com/webchess/'; // The home page of the webchess script (include closing / )
+
+	$CFG_SITENAME       = 'Your Site'; // The name of your website
+
+	$CFG_SESSIONTIMEOUT = 0; // Number of minutes before session timeout (0 to disable)
+
+	$CFG_EXPIREGAME     = 45; // Number of days before untouched games are deleted (0 to disable)
+
+	$CFG_EXPIREUSERS    = 30; // Number of days before untouched accounts are deleted (0 to disable)
+
+	$CFG_MINAUTORELOAD  = 15; // Minimum number of secs between automatic page reloads (0 to disable)
+
+	$CFG_USEEMAIL       = true; // SMTP operations.  Test it before putting it into production
+
+	$CFG_MAILADDRESS    = 'your.mail@yoursite.com'; // Email address people see when receiving WebChess generated mail
+
+	$CFG_MAXUSERS       = 0; // Maximum number of users allowed (0 to disable)
+
+	$CFG_CHANGEUSERNAME = false; // Whether a user can change their username from the main menu
+
+	$CFG_NEWUSERS       = true; // Whether a new user can register
+
+	$CFG_LONGDATE       = 'F j, Y \&\n\b\s\p\;g:i a'; // PHP date format
+
+	$CFG_SHORTDATE      = 'Y.m.d H:i'; // PHP date format
+
+	$CFG_CHESS960       = true; // Whether users can play Chess960 (Fischer Random Chess) games
+
+	$CFG_RATING_START   = 1500; // the starting ELO rating for new players
+
+	$CFG_RATING_STEP    = 32; // the max ELO rating change allowed per game
+
+	$CFG_NAVLINKS       = '<a href="/">Home</a>'; // your site's nav links
+
+
+
+/* MySQL Error / debug settings */
+/* ---------------------------- */
+	define ('DB_ERR_EMAIL_ERRORS', true); // (true / false) set to true to email errors to TO address below
+	define ('DB_ERR_LOG_ERRORS'  , true); // (true / false) set to true to log errors in mysql.err file
+	define ('DB_ERR_TO'          , 'you@yoursite.com'); // set your TO email address
+	define ('DB_ERR_SUBJECT'     , 'WebChess Query Error'); // don't really need to change this
+	define ('DB_ERR_FROM'        , $CFG_MAILADDRESS); // set your FROM email address (can be the same as TO above)
+	define ('DB_STATS_LOG'       , true); // (true / false) set to true to log query stats in mysql.err file (or database)
+	define ('FILE_PATH_END'      , 'webchess'); // set the name of the directory containing the script (with wrapping / )
+
+
+
+/* DEVELOPER USE ONLY */
+/* ------------------ */
+
+/* INCLUDE SOME GLOBAL INCLUDES */
+require_once 'mysql.class.php';
+require_once 'chessgame.inc.php';
+
+// instantiate the class and connect to the database
+$mysql = new mysql($CFG_HOSTNAME, $CFG_USERNAME, $CFG_PASSWORD, $CFG_DATABASE);
+$mysql->connect_select(__LINE__,__FILE__);
+
+// instantiate the chess class
+$chess = new ChessGame( );
+
+define('DEBUG', false); // set to true for output of debugging code
+
+if (defined('DEBUG') && DEBUG)
+{
+	ini_set('display_errors','On');
+	error_reporting(4095);
+	$mysql->error_debug = true; // Allows for error debug output
+	$mysql->query_debug = true; // Allows for output of all queries all the time
+	$mysql->super_debug = false; // Allows output of ALL debugging output
+	define('JS_DEBUG', 0); // set to 1 for really annoying jvascript debug
+}
+else // do not edit the following
+{
+	ini_set('display_errors','Off');
+	error_reporting(0); // set to 0 when releasing to public
+	$mysql->error_debug = false; // Allows for error debug output
+	$mysql->query_debug = false; // Allows for output of all queries all the time
+	$mysql->super_debug = false; // Allows output of ALL debugging output
+	define('JS_DEBUG', 0);
+}
+
+require_once('message.class.php');
+
+function call($var = '^^k8)SJ2di!U')
+{
+	if ( ! defined('DEBUG') || (false == DEBUG))
+	{
+		return false;
+	}
+
+	if ('^^k8)SJ2di!U' === $var)
+	{
+		echo '<span style="font-weight:bold;background:white;color:red;">*****</span>';
+	}
+	else
+	{
+		// begin output buffering so we can escape any html
+		ob_start( );
+
+		if (is_string($var) && isset($GLOBALS[$var]))
+		{
+			echo '$' . $var . ' = ';
+			$var = $GLOBALS[$var];
+		}
+
+		if (is_bool($var) || is_null($var))
+		{
+			var_dump($var);
+		}
+		else
+		{
+			print_r($var);
+		}
+
+		// end output buffering and output the result
+		$contents = htmlentities(ob_get_contents( ));
+		ob_end_clean( );
+
+		echo '<pre style="background:#FFF;color:#000;font-size:larger;">'.$contents.'</pre>';
+	}
+}
+
+require_once('func.array.php');
+require_once('func.bitwise.php');
+require_once('func.global.php');
+
+$CFG_SESSIONTIMEOUT *= 60; // convert minutes to seconds
+
+date_default_timezone_set('UTC');
+
+?>

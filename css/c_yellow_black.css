@@ -1,0 +1,223 @@
+
+/* WebChess 2.0 colors */
+/* yellow-black created by Benjam Welker */
+
+/*
+	all the layout for the webpages are specified in the layout.css
+	file.  the colors have been seperated out for ease of customization
+*/
+
+
+
+/* body background */
+body {
+	background: #000 url(../images/bg_chess_black.gif) 40% 95% no-repeat fixed;
+}
+
+
+/* text color */
+body , a , #menu a {
+	color: #EEE;
+}
+
+a:hover {
+	color: #CC0;
+}
+
+h1 {
+	background: #000 url(../images/bg_yellow_black.gif) top center repeat-x;
+}
+
+
+/* main (basic) */
+.warning {
+	color: #CC0;
+	background-color: #FFF;
+}
+
+h2 {
+	border-bottom: 1px solid #777;
+}
+
+table , .notable {
+	border: 1px solid #777;
+}
+
+th {
+	border-bottom: 2px solid #777;
+}
+
+td {
+	border-right: 1px dashed #444;
+	background-color: #000;
+	color: #DDD;
+}
+
+.alt td {
+	background-color: #222;
+}
+
+tr[onclick]:hover td {
+	background-color: #8F8F00;
+	color: #FFF;
+}
+
+.mine ,
+.mine *,
+.notice ,
+.notice *,
+.myturn td,
+.myturn td * {
+	color: #CC0;
+}
+
+#menu li.active .notice {
+	color: #FFF;
+}
+
+.instruction {
+	color: #AAA;
+}
+
+abbr,
+acronym {
+	border-color: #555;
+}
+
+a.help {
+	border-color: #777;
+	color: #CC2;
+}
+
+a.help:hover {
+	border-color: #CC2;
+}
+
+hr.fancy {
+	background-color: #440;
+	border: 1px solid #660;
+}
+
+fieldset {
+	border: 1px solid #8F8F00;
+}
+
+
+/* footer */
+#footer,
+#FENblock {
+	background: #000 url(../images/bg_yellow_black.gif) top center repeat-x;
+	border-top: 1px solid #BBB;
+}
+
+
+/* links */
+#links a , #footer {
+	color: #EEE;
+}
+
+#links a:hover {
+	background-color: #FFF;
+	color: #8F8F00;
+	border: 1px solid #000;
+}
+
+
+/* notes */
+#notes {
+	background-color: #111;
+	border: 1px solid #660;
+}
+
+
+/* messages */
+.messageheader {
+	border-bottom: 1px solid #CC0;
+}
+
+
+/* menu */
+#menu ,
+#menuholder {
+	border: 1px solid #660;
+}
+
+#menu a {
+	color: #DDD;
+	background-color: #111;
+	border-bottom: 1px solid #333;
+}
+
+#menu a:hover,
+.moveList td.wm[onclick]:hover,
+.moveList td.bm[onclick]:hover {
+	color: #FFF;
+	background-color: #404000;
+}
+
+#menu li.active a,
+.moveList td.curmove_highlighted {
+	color: #FFF;
+	background-color: #9F9F00;
+	border-color: #333;
+}
+
+
+/* the chess page styles */
+#captures {
+	background-color: #B2CDDB;
+}
+
+#curmove {
+	border: 1px solid #CC0;
+}
+
+table.movelist{
+	border: 0;
+}
+
+/* the chess board styles */
+.fromSquare { background: url(../images/circle_white.gif) no-repeat center; }
+.toSquare   { background: url(../images/circle_white.gif) no-repeat center; }
+
+.header_enabled, .header_disabled,
+.light_enabled, .light_disabled,
+.dark_enabled, .dark_disabled {
+	color: #FFF;
+}
+
+#chessboard {
+	border-color: #FFF;
+}
+
+.header_enabled  { background-color:#47638F; }
+.light_enabled   { background-color:#B2CDDB; }
+.dark_enabled    { background-color:#99BDD0; }
+
+.highlighted     { background-color:#FF0; }
+.taken_highlighted { background-color:#F00; }
+
+
+
+
+/* these shouldn't be changed, but if you must... */
+
+.header_disabled { background-color:#616161; }
+.light_disabled  { background-color:#C9C9C9; }
+.dark_disabled   { background-color:#B7B7B7; }
+
+#checkmsg {
+	background-color: #F00;
+}
+
+.kingto, .origking {
+	color: #FFCFCF;
+}
+.rookato, .origarook {
+	color: #D0CFFF;
+}
+.rookhto, .orighrook {
+	color: #CFFFD1;
+}
+
+

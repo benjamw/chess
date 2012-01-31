@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<!-- $Id: notation.html 49 2007-03-17 03:36:47Z Benjam $ -->
+<title>Notation Help</title>
+<style type="text/css">
+body{padding:2em;}
+dl,ul{margin:1ex;}
+dt{margin-left:1em;font-weight:bold;}
+dd{font-size:smaller;}
+img{border:1px solid #666;margin:1ex auto;display:block;}
+p{text-indent:2em;margin:5px 0;text-align:justify;}
+.noindent{text-indent:0;margin-top:1ex;}
+.caption{font-size:small;margin:0 20px 10px;text-indent:0;}
+table{border:1px solid #444;border-collapse:collapse;caption-side:bottom;}
+td{font-family:monospace;border-bottom:1px solid #777;border-right:1px solid #777;padding:3px;}
+th{border:2px solid #777;padding:3px;}
+caption{padding-top:1em;}
+.amb{color:red;}
+</style>
+</head>
+<body>
+<div>
+<p>There are several different kinds of chess notation available in WebChess.
+This page describes them and gives examples. Examples for all the notations can
+be <a href="#table">compared in the table</a> at the bottom of the page.</p>
+<br />
+<p class="noindent">The following notations are available:</p>
+<ul>
+<li><a href="#coord">Coordinate</a></li>
+<li><a href="#alg">Algebraic</a></li>
+<li><a href="#longalg">Long Algebraic</a></li>
+<li><del><a href="#desc">Descriptive</a></del></li>
+<li><a href="#int">International</a></li>
+<li><a href="#verbous">Verbose</a></li>
+</ul>
+<br />
+<h2><a name="coord"/>Coordinate</h2>
+<hr />
+<p>Coordinate notation gives the starting square and the ending square as well
+as special notation for captures, en passant captures, castle moves, check, and
+mate moves.</p>
+<h2><a name="alg"/>Algebraic</h2>
+<hr />
+<p>Algebraic notation gives the piece being moved (if the piece is not a pawn)
+and part of the starting square only when the starting square is ambiguous (i.e. more
+than one piece could have moved to the ending square) as well as the ending square.
+Special notation for captures, en passant captures, castle moves, check, and
+mate moves is also given. This is the notation used in
+<acronym title="Portable Game Notation">PGN</acronym> files.</p>
+<h2><a name="longalg"/>Long Algebraic</h2>
+<hr />
+<p>Long Algebraic notation is the same as Algebraic except the starting square
+is always given as a full square.  This notation is the same as the (incorrectly
+named) PGN notation in previous versions of WebChess.</p>
+<h2><a name="desc"/>Descriptive</h2>
+<hr />
+<p>Descriptive notation gives the piece moved and the ending square as a
+descriptive location counted from the players own side.  For instance:
+if a bishop moves from its home square to a square four spaces up in front of the
+queen side rook, then the notation is like this: B-R4, which means the bishop
+moved to the fourth square ABOVE the queens rook.  If the other bishop could
+have moved into the fourth square above the king side rook, then the notation
+removes the ambiguity by adding queen side information like this: B-QR4.  If the
+starting square is ambiguous, more information is given in the notation just as
+with ambiguous ending squares.  For captures, only the moved piece and the
+captured piece are given as follows: NxR unless the move is ambiguous, then more
+information is given.  Your opponents back rank is 8, your own back
+rank is 1.  Special notation for captures, en passant captures, castle moves,
+check, and mate moves is also given.  Because this notation is based on the
+starting positions in an orthodox game, this notation may get a little confusing
+in Chess960 games.</p>
+<h2><a name="int"/>International</h2>
+<hr />
+<p>International notation gives the starting square and the ending square as a
+four digit number in the format: starting file, starting rank, ending file,
+ending rank.  All numbers are counted 1-8 from the left-hand, white-side dark
+square (A1).  For instance, a move from the 3rd file, 4th rank, to the 5th file,
+5th rank would be displayed as 3455.  No special notation is given for captures,
+en passant captures, castle moves, check, or mate.  For castle moves, the
+notation follows the king.  For a-side castles (long castle) it would be 5131.
+Because of this, castle move notation may get confusing in Chess960 games
+because the king may only move one square, and it becomes ambiguous if this move
+was a castle move, or a normal move.  For pawn promotions the notation is a little
+different.  When a pawn is promoted, the final number (the ending rank) is
+replaced with a numerical representation of the piece the pawn was promoted to,
+such as: 4742, which would be a pawn moving along file 4 from rank 7 to rank 8
+(not shown because it is understood), and promoted to a rook (2). Q=1, R=2, B=3,
+N=4.  If the move had been a pawn capture and promotion, the notation would be:
+4751. Capturing the piece on file 5, and promoted to queen.</p>
+<h2><a name="verbous"/>Verbose</h2>
+<hr />
+<p>Verbose notation is just like regular speech: "pawn from a2 to a4", "queen
+from d5 captures g2, check".</p>
+<br />
+<br />
+<table><a name="table"/>
+	<caption><strong>Comparison Table</strong> The verbose notation is listed first
+	to describe the moves for comparison with the other notations.  All moves are
+	equivalent and taken from an orthodox game.  (Red entries denote disambiguous notation,
+	notation for a move where there were at least two possible pieces that could have moved
+	into that position legally.)</caption>
+	<tr>
+		<th>Verbose</th>
+		<td>bishop from f5 to e4</td>
+		<td>rook from a1 captures c1</td>
+		<td>knight from d6 to c4, check</td>
+		<td>pawn from b5 captures a6 en passant</td>
+		<td>short castle</td>
+		<td>pawn from c2 to c1, promoted to rook</td>
+		<td>pawn from d5 captures c6 en passant, check</td>
+	</tr><tr>
+		<th>Coordinate</th>
+		<td>f5-e4</td>
+		<td>a1xc1</td>
+		<td>d6-c4+</td>
+		<td>b5xa6ep</td>
+		<td>O-O</td>
+		<td>c2-c1=r</td>
+		<td>d5xc6ep+</td>
+	</tr><tr>
+		<th>Algebraic</th>
+		<td>Be4</td>
+		<td><span class="amb">Raxc1</span></td>
+		<td>Nc4+</td>
+		<td>bxa6ep</td>
+		<td>O-O</td>
+		<td>c1=R</td>
+		<td>dxc6ep+</td>
+	</tr><tr>
+		<th>Long Algebraic</th>
+		<td>Bf5-e4</td>
+		<td>Ra1xc1</td>
+		<td>Nd6-c4+</td>
+		<td>b5xa6ep</td>
+		<td>O-O</td>
+		<td>c2-c1=R</td>
+		<td>d5xc6ep+</td>
+	</tr><tr>
+		<th>Descriptive</th>
+		<td>B-K5</td>
+		<td><span class="amb">QRxR</span></td>
+		<td>N-B4ch</td>
+		<td><span class="amb">QPxPEP</span></td>
+		<td>O-O</td>
+		<td>P-B8=R</td>
+		<td>PxPEPch</td>
+	</tr><tr>
+		<th>International</th>
+		<td>6554</td>
+		<td>1131</td>
+		<td>4634</td>
+		<td>2516</td>
+		<td>5171</td>
+		<td>3232</td>
+		<td>4536</td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<!-- $Id: c960castling.html 49 2007-03-17 03:36:47Z Benjam $ -->
+<title>Chess960 Castling Help</title>
+<style type="text/css">
+body{padding:2em;}
+dl,ul{margin:1ex;}
+dt{margin-left:1em;font-weight:bold;}
+dd{font-size:smaller;}
+img{border:1px solid #666;margin:1ex auto;display:block;}
+p{text-indent:2em;margin:5px 0;text-align:justify;}
+.noindent{text-indent:0;margin-top:1ex;}
+.caption{font-size:small;margin:0 20px 10px;text-indent:0;}
+</style>
+</head>
+<body>
+<div>
+There are a few things about castling in Chess960 that may be confusing.<br />
+This help page will help to clear this up.
+<br />
+<p class="noindent">As with normal chess:
+<ul>
+<li>Neither the castling rook nor the king can move prior to castling.</li>
+<li>All spaces between the king and the castling rook must be empty.</li>
+<li>The king cannot currently be in check.</li>
+<li>The king cannot move through any space that can be attacked by your opponent.</li>
+<li>The king cannot move into check.</li>
+<li>No captures can be made during castling. (Although this situation is impossible in normal chess)</li>
+</ul></p>
+<br />
+<p>Another thing similar with normal chess, is that the king and castling rook end up on the same squares that they would have had they castled in normal chess.</p>
+<p>This means that when castling to a-side (O-O-O) the king ends up on the C file and the rook ends up on the D file, <strong>NO MATTER WHAT THE STARTING POSITION WAS</strong>.</p>
+<p>The same holds true for h-side castling (O-O): the king ends up on the G file and the rook on the F file.</p>
+<p>These ending positions are noted on the WebChess chess board with a small K where the king ends up and a small R where the rook ends up (note there are two of each, one for each castle).</p>
+<p>The color of the R denotes which side the rook came from: blue for a-side and green for h-side.  The king is red for both cases, but note that there are two of them.</p>
+<p class="noindent">This means that during castling there are four situations that can occur:
+<dl>
+<dt>Only the king moves</dt><dd>The rook is already on the square it will end up on and the king jumps over the rook to take it's proper place.</dd>
+<dt>Only the rook moves</dt><dd>The king is already on the square it will end up on and the rook jumps over the king to take it's proper place.</dd>
+<dt>The king and rook switch</dt><dd>The king is on the square the rook will occupy and the rook is on the square the king will occupy.  They merely switch places.</dd>
+<dt>Both the king and rook move</dt><dd>This move is the most similar to castling in normal chess, whereby both the king and rook move several spaces to occupy their proper places.<dd>
+</dl></p>
+<br />
+<img src="../images/help.png" />
+<p class="caption">This is a sample of the file markings that can be seen on the WebChess chess board.  (The starting position for this display was NBNRBQKR: ID960 = 56).</p>
+<p>Note the colored file identifiers: d, g, and h. (These positions will change depending on the starting layout of the board.)</p>
+<p>The starting position for the a-side rook was on the D file (the blue d), the starting position of the king was on the G file (the red g), and the starting position of the h-side rook was on the H file (the green h).</p>
+<!--<p>Note that the castle buttons are also colored to match the castle move it is associated with, and is also placed on the proper side: O-O-O for a-side, and O-O for h-side.</p>-->
+<p>If the king is clicked, then the a-side rook (on file d) is clicked, and a castle move is valid, the a-side rook will not move, staying on the D file (the blue R), and the king will move from G to C (the a-side red K).</p>
+<p>If the king is clicked, then the h-side rook (on file h) is clicked, and a castle move is valid, the h-side rook will move from the H file to the F file (the green R), and the king will not move, staying on the G file (the h-side red K).</p>
+<p>There may be times when the king and rook, when castling to the right, both move left, and vice versa.  So be sure to click the rook on the proper side of the king.</p>
+<p>Also note that the positions will be reversed for black, with H (O-O) on the left and A (O-O-O) on the right, but the moves will be the same.</p>
+<br />
+<br />
+<p>If you require more assistance with Chess960 castling in general, there are many places on the internet that discuss it in more detail.</p>
+<p>If you require more assistance with Chess960 castling in WebChess, please contact your WebChess board administrator.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+-- there is some session stealing going on between webrisk and webchess
+	webchess is grabbing the gmae_id from webrisk
+
+-- check for opponent playing, and if not, and undo request was
+	within last thirty second of move, perform undo
+
+-- make messages like in battleship, how they can be marked as seen
+	and deleted, fully deleted, not just disappeared
+
+-- make messages from admin be stored as from:0 to:0 and when a
+	new player joins, search the messages and add those to the list
+	so they can be deleted when finished being read
+
+-- send email on checkmate or resignation
+
+-- make all files rely on thier own requires, not the parent file
+	if a file does not NEED a require, delete it; if it does, add it
+	-- also, make include folder a global var (possibly while installing)
+
+-- check and see about administrator messages and changing messages to
+	be 'viewed' 'archived' and 'deleted'
+
+-- order of operations in chess.php to do things in the correct order
+	so functions don't have to be run twice, REALLY NEEDS WORK !!
+
+-- possibly change the way moves are handled, run through a second
+	file to perform move and update database, include( ) maybe?  then
+	continue running chess after include is complete
+
+-- fix and rework new values to be consistent (ie from_col, col_to,
+	etc.)
+	change all to location/type as in: from_sqr, to_col, capt_idx, etc
+	use three letter types for all:
+	make sure to also switch $board[row][col] -> [col][row]
+	for easy (x,y) compatibility
+
+	sqr = php notation square number: 0-63 = a1 - h7, l->r, w->b
+	col = php notation col number: 0-7 = file a-h, always do col then row, ie x then y
+	row = php notation row number: 0-7 = rank 1-8
+	til = chess notation square (tile): a1, g4, h8, c3
+	idx = php notation expanded FEN index number: 0-63 = h1 - a7, l->r, b->w
+
+-- generate different notations:
+	Descriptive  (need time and patience)
+
+-- when done, go through and clean out what is no longer needed
+	non DEBUG alerts, php call( )s, comment blocks, and dead functions
+
+-- see about maybe converting to objects ???
+
+
+
+currently working on:
+------------------------------------------------------------------------
+
+
+
+
+
+things to test for:
+	- castle moves, both sides, both colors, valid and invalid from
+		multiple positions
+	- en passant moves, both colors, all possible combinations
+	- pawn promotions, all promotes, all squares
+	- checks and mates (basic functionality, don't even try to test all)
+
+
+

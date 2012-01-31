@@ -1,0 +1,514 @@
+
+/* WebChess 2.0 layout */
+
+/*
+	all the colors for the styles are listed in the
+	c_{color_name}.css file.  they are pulled out for
+	ease of customization.  set your color by entering
+	the name of the css file you wish to use in the
+	config.inc.php file.
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-weight: normal;
+	font-family: sans-serif;
+}
+
+
+/* header */
+h1 {
+	height: 45px;
+	margin: 0 0 3px;
+	padding: 5px 15px 0;
+}
+
+h1 img {
+	position: relative;
+	top: 3px;
+	border: 0;
+	margin: 0;
+}
+
+a {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+#date {
+	font-size: 10px;
+	font-weight: bold;
+	white-space: nowrap;
+	text-align: right;
+}
+
+
+/* links */
+#links {
+	float: right;
+	margin: 1ex 1em;
+	font-weight: bold;
+}
+
+#links a {
+	text-decoration: none;
+	padding: 0.3ex 0.75ex;
+}
+#links a:hover {
+	margin: -1px;
+}
+
+/* fix some stupid IE7 float bug */
+*:first-child+html #links {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 5;
+}
+
+
+/* wrapper */
+#wrapper {
+	margin: 0;
+	padding: 0;
+}
+
+
+/* menu */
+#menu ,
+#menuholder {
+	float: left;
+	margin: 3px;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0;
+}
+
+
+#menu li {
+	text-indent: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none outside none;
+}
+
+*:first-child+html #menu li {
+	margin-left: -1.25em;
+}
+
+
+#menu a {
+	text-align: right;
+	font-size: 10px;
+	padding: 6px 5px;
+	width: 160px;
+	white-space: nowrap;
+	margin: 0;
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+}
+
+
+/* notes */
+#notes {
+	float: right;
+	width: 160px;
+	min-height: 300px;
+	padding: 5px;
+	margin: 3px;
+}
+
+
+/* main */
+.warning {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	padding: 1ex;
+}
+
+h2 {
+	font-size: 14px;
+}
+
+#content {
+	margin: 3px 180px; /* the column widths plus 2*5px for padding and 2*1px for border and 2*3px for margin plus 2*1px for extra spacing between */
+}
+
+table {
+	border-collapse: collapse;
+	font-size: 12px;
+	width: 100%;
+}
+
+.notable {
+	padding: 5px;
+}
+
+caption {
+	font-weight: bold;
+	margin: 2px;
+}
+
+th {
+	padding: 5px;
+}
+
+td {
+	padding: 5px;
+}
+
+tr[onclick]:hover td {
+	cursor: pointer;
+}
+
+.numeric ,
+.date {
+	text-align: right;
+}
+
+.buttons {
+	text-align: center;
+}
+
+.stats {
+	width: 150px;
+	float: left;
+	margin: 3px;
+}
+
+.playerstats {
+	float: left;
+	margin: 3px;
+	width: auto;
+}
+
+.playerstats caption {
+	margin-top: 20px;
+}
+
+.messagesubject {
+	font-weight: bold;
+}
+
+
+/* footer */
+#footer,
+#FENblock {
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+	line-height: 26px;
+	clear: both;
+	padding: 3px 0;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+#footerspacer {
+	height: 50px; /* make sure nothing gets hidden behind the footer */
+	clear: both;
+}
+
+#footer span {
+	margin: 0 2em;
+}
+
+#footer p {
+	margin: 0;
+	padding: 0;
+	line-height: 130%;
+}
+
+/* other basic styles */
+.mine ,
+.notice ,
+.myturn td {
+	font-weight: bold;
+}
+
+.afterthought {
+	font-size: 11px;
+	font-weight: normal;
+}
+
+.instruction {
+	margin: 0 0 10px 10px;
+	font-size: 11px;
+	line-height: 11px;
+}
+
+abbr,
+acronym {
+	border-bottom: 1px dashed #777; /* leave this here to always show at least something */
+	cursor: help;
+}
+
+a.help {
+	border: 1px solid #777; /* leave this here to always show at least something */
+	font-weight: bold;
+	padding: 0 2px;
+	text-decoration: none;
+}
+a.help:hover {
+	border: 1px solid #777; /* leave this here to always show at least something */
+}
+
+hr.fancy {
+	height: 5px;
+	margin: 1em;
+}
+
+
+/* the chess page styles */
+#history {
+	float: left;
+	width: 200px;
+	margin: 3px;
+	margin-top: 0;
+	padding-top: 1px;
+}
+
+#board {
+	float: left;
+	margin: 3px;
+	margin-top: 0;
+	width: 450px;
+	text-align: center;
+}
+
+#chat {
+	margin: 3px;
+	margin-left: 669px;
+	padding-top: 1px;
+}
+
+#chatholder,
+#gamebody {
+	padding: 1px;
+	max-height: 400px;
+	overflow: auto;
+}
+
+#chat table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#chat table td,
+#chat table th {
+	text-align: left;
+	vertical-align: top;
+	padding: 2px 3px;
+}
+
+#chat table td.player {
+	text-align: right;
+	width: 1px;
+	white-space: nowrap;
+}
+
+#chat tr.opp {
+	font-weight: bold;
+}
+
+#chat input[type=textbox] {
+	margin-top: 5px;
+	width: 99%;
+}
+
+#FENblock {
+	clear: both;
+	text-align: center;
+	white-space: nowrap;
+	margin-top: 1ex;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#captheading {
+	text-align: left;
+	font-weight: bold;
+	margin-top: 1ex;
+}
+
+#captures {
+	text-align: left;
+	margin: 0;
+	height: 66px;
+}
+
+#gamemenu {
+	margin-top: 0.5em;
+}
+
+
+/* the history table */
+table.moveList {
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 5px auto;
+	font-size: 12px;
+}
+
+.moveList td {
+	padding: 0 5px;
+	text-align: left;
+}
+
+.moveList td.mn {
+	font-weight: bold;
+	text-align: right;
+}
+
+.moveList td.wm {
+	font-family: monospace;
+	white-space: nowrap;
+}
+
+.moveList td.bm {
+	font-family: monospace;
+	white-space: nowrap;
+}
+
+.moveList td.wm[onclick],
+.moveList td.bm[onclick] {
+	cursor: pointer;
+}
+
+
+
+/* below chess board stuffs */
+
+#checkmsg,
+#statusmsg {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px;
+}
+
+#checkmsg {
+	padding: 0;
+}
+
+#gamebuttons,
+#gamenav {
+	margin: 1ex auto;
+}
+#navigation input {
+	width: 50px;
+	font-size: 10px;
+}
+
+#curmove {
+	font-size: 12px;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 0 2em;
+	margin: 0 2px;
+}
+
+* html form {
+	margin: 0;
+}
+
+
+
+/* the chess board styles ------------
+
+	 do not edit these, if things need to be moved
+	 edit #chessboard, things will break horribly
+	 if these sizes are changed
+*/
+
+.header_enabled, .header_disabled,
+.light_enabled, .light_disabled,
+.dark_enabled, .dark_disabled {
+	text-align: center;
+	font-weight: bold;
+}
+
+.header_enabled  { font-size:16px; }
+.header_disabled { font-size:16px; }
+
+.kingto, .rookato,
+.rookhto, .spacer {
+	margin: 0 4px;
+	font-size: 0.7em;
+	vertical-align: top;
+}
+.spacer {
+	visibility: hidden; /* hide but retain space */
+}
+
+#chessboard {
+	border: 2px solid #000; /* leave this here, it's required for the layout */
+	width: 1px;
+	height: 1px;
+}
+html[xmlns] #chessboard {
+	width: 450px !important;
+	height: 450px !important;
+}
+
+#theBoard {
+	border: 0 !important;
+	width: 450px;
+	height: 450px;
+}
+
+#theBoard div {
+	border: 0 !important;
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+#theBoard .vert {
+	width: 25px !important;
+	height: 50px !important;
+	padding-top: 18px !important;
+}
+html[xmlns] #theBoard .vert {
+	height: 32px !important;
+}
+* html #theBoard .vert {
+	height: 32px !important;
+}
+
+#theBoard .horz {
+	width: 50px !important;
+	height: 25px !important;
+	padding-top: 4px !important;
+}
+html[xmlns] #theBoard .horz {
+	height: 21px !important;
+}
+* html #theBoard .horz {
+	height: 21px !important;
+}
+
+#theBoard .whitecorner {
+	background: #FFF;
+	width: 25px !important;
+	height: 25px !important;
+}
+#theBoard .blackcorner {
+	background: #000;
+	width: 25px !important;
+	height: 25px !important;
+}
