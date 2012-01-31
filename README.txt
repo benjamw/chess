@@ -38,7 +38,3 @@ To update from previous v1.0 RX versions
 
 I'm sorry but there is no update script available at this time.
 
--------------------------------------------
-
-If you find any bugs or have any problems, email me at
-benjam@iohelix.net
