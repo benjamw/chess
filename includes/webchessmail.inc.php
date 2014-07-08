@@ -116,4 +116,4 @@ function webchessMail($type, $msgTo, $move, $opponent, $game_id)
 
 	return mail($msgTo,$subject,$message,$headers);
 }
-?>
+

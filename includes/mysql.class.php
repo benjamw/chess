@@ -931,4 +931,3 @@ function safe_var_export($var)
 	return var_export($var, true);
 }
 
-?>

@@ -762,4 +762,3 @@ function printboard( )
 	echo "</pre>";
 }
 
-?>

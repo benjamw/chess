@@ -59,4 +59,3 @@ FENtomoves( ); // (chessutils.inc.php)
 returnGameInfo($_SESSION['game_id']);
 echo getPGN( );
 
-?>

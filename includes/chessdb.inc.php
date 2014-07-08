@@ -787,4 +787,3 @@ function adjust_stats($p1_id, $p2_id, $S1, $S2)
 	}
 }
 
-?>

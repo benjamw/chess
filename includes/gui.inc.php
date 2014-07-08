@@ -597,4 +597,3 @@ function getMovesLongAlg($last = false)
 	}
 }
 
-?>

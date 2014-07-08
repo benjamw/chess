@@ -101,4 +101,3 @@ function jsCode2pieceCode($code)
 
 $COLS = 'abcdefgh';
 
-?>

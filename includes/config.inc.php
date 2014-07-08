@@ -175,4 +175,3 @@ $CFG_SESSIONTIMEOUT *= 60; // convert minutes to seconds
 
 date_default_timezone_set('UTC');
 
-?>

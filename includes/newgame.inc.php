@@ -83,4 +83,3 @@ function createNewGame($game_id,$id960 = "")
 	initBoard($pos);
 }
 
-?>

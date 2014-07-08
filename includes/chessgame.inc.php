@@ -1917,4 +1917,3 @@ function getAdjTiles( $fig_pos )
 
 } // class ChessGame
 
-?>
