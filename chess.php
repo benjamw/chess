@@ -150,7 +150,7 @@ if ($undoing && 0 < $num_moves)
 	if (!DEBUG) header("Location: ./chess.php");
 }
 // or saving the promotion
-else if ( isset($_POST['promotion']) && '' != $_POST['promotion'] && false != $_POST['promoting'] )
+elseif ( isset($_POST['promotion']) && '' != $_POST['promotion'] && false != $_POST['promoting'] )
 {
 	call("SAVING PROMOTION");
 	savePromotion( ); // inserts promoted piece and saves to database (chessdb.inc.php)
@@ -158,7 +158,7 @@ else if ( isset($_POST['promotion']) && '' != $_POST['promotion'] && false != $_
 	if (!DEBUG) header("Location: ./chess.php");
 }
 // or making a move
-else if ( ( isset($_POST['fromRow']) && '' != $_POST['fromRow'] && '' != $_POST['fromCol'] && '' != $_POST['toRow'] && '' != $_POST['toCol'] ) || ( isset($_POST['castleMove']) && 'false' != $_POST['castleMove'] ) )
+elseif ( ( isset($_POST['fromRow']) && '' != $_POST['fromRow'] && '' != $_POST['fromCol'] && '' != $_POST['toRow'] && '' != $_POST['toCol'] ) || ( isset($_POST['castleMove']) && 'false' != $_POST['castleMove'] ) )
 {
 	call("MAKING A MOVE");
 	call($_POST);
@@ -199,7 +199,7 @@ else if ( ( isset($_POST['fromRow']) && '' != $_POST['fromRow'] && '' != $_POST[
 	}
 }
 // or we need to select the promoting piece
-else if ('P' == strtoupper($movesArray[$num_moves]['piece']) && ( ! isset($movesArray[$num_moves]['promo']) || null == $movesArray[$num_moves]['promo']))
+elseif ('P' == strtoupper($movesArray[$num_moves]['piece']) && ( ! isset($movesArray[$num_moves]['promo']) || null == $movesArray[$num_moves]['promo']))
 {
 	if($movesArray[$num_moves]['toRow'] == 7 || $movesArray[$num_moves]['toRow'] == 0)
 	{
@@ -294,7 +294,7 @@ if ($_SESSION['shared'])
 {
 	$turn = "Shared";
 }
-else if ($isPlayersTurn)
+elseif ($isPlayersTurn)
 {
 	$turn = "Your Move";
 }
@@ -340,7 +340,7 @@ $head_extra = '
 		{
 			$head_extra .= "0";
 		}
-		else if ( $_SESSION['pref_auto_reload'] >= $CFG_MINAUTORELOAD )
+		elseif ( $_SESSION['pref_auto_reload'] >= $CFG_MINAUTORELOAD )
 		{
 			$head_extra .= $_SESSION['pref_auto_reload'];
 		}

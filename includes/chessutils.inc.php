@@ -93,7 +93,7 @@ function clearAmbiguity($n = 'NaN')
 	{
 		return '';
 	}
-	else if (('P' == strtoupper($piece)) && isset($movesArray[$n]['captSq']))
+	elseif (('P' == strtoupper($piece)) && isset($movesArray[$n]['captSq']))
 	{
 		// we always return a sqFrom for pawn captures
 		// but just the letter
@@ -144,7 +144,7 @@ function clearAmbiguity($n = 'NaN')
 			{
 				$found[] = $idx;
 			}
-			else if (('0' != $item) && ('N' != strtoupper($piece))) // else if we found a blocking piece (unless testing knights)
+			elseif (('0' != $item) && ('N' != strtoupper($piece))) // else if we found a blocking piece (unless testing knights)
 			{
 				continue; // skip to the next direction
 			}
@@ -172,7 +172,7 @@ function clearAmbiguity($n = 'NaN')
 				return $from_til[0];
 			}
 		}
-		else if (2 <= count($found))
+		elseif (2 <= count($found))
 		{
 			$rank = $file = false;
 
@@ -187,7 +187,7 @@ function clearAmbiguity($n = 'NaN')
 					// let us know
 					$file = true;
 				}
-				else if ($amb_til[1] == $from_til[1]) // if the ranks are the same
+				elseif ($amb_til[1] == $from_til[1]) // if the ranks are the same
 				{
 					// let us know
 					$rank = true;
@@ -199,7 +199,7 @@ function clearAmbiguity($n = 'NaN')
 			{
 				return $from_til[0]; // return the file
 			}
-			else if (false === $rank) // if not on the same rank
+			elseif (false === $rank) // if not on the same rank
 			{
 				return $from_til[1]; // return the rank
 			}
@@ -267,7 +267,7 @@ function returnGameInfo($game_id)
 	{
 			$MyColor="white";
 	}
-	else if ( isset($_SESSION['player_id']) && $game['g_black_player_id'] == $_SESSION['player_id'] )
+	elseif ( isset($_SESSION['player_id']) && $game['g_black_player_id'] == $_SESSION['player_id'] )
 	{
 			$MyColor="black";
 	}
@@ -401,7 +401,7 @@ function FENtomoves( )
 				$fromIdx = strpos($thatBoard,'K'); // the king's starting position
 				$toIdx   = 58; // the king's final position
 			}
-			else if ('K' == substr($backRank,6,1) && 'R' == substr($backRank,5,1) && false !== strpos($thatFEN[2],'K'))
+			elseif ('K' == substr($backRank,6,1) && 'R' == substr($backRank,5,1) && false !== strpos($thatFEN[2],'K'))
 			{
 				$movesArray[$i]['piece'] = 'K';
 				$movesArray[$i]['extra'] = 'O-O';
@@ -409,7 +409,7 @@ function FENtomoves( )
 				$toIdx   = 62; // the king's final position
 			}
 		}
-		else if ('b' == $thatFEN[1] // it was black's move
+		elseif ('b' == $thatFEN[1] // it was black's move
 			&& ( false !== strpos($thatFEN[2],'k') || false !== strpos($thatFEN[2],'q')) // and they could have castled
 			&& ( false === strpos($thisFEN[2],'k') && false === strpos($thisFEN[2],'q'))) // and now they can't
 		{
@@ -423,7 +423,7 @@ function FENtomoves( )
 				$fromIdx = strpos($thatBoard,'k'); // the king's starting position
 				$toIdx   = 2; // the king's final position
 			}
-			else if ('k' == substr($backRank,6,1) && 'r' == substr($backRank,5,1) && false !== strpos($thatFEN[2],'k'))
+			elseif ('k' == substr($backRank,6,1) && 'r' == substr($backRank,5,1) && false !== strpos($thatFEN[2],'k'))
 			{
 				$movesArray[$i]['piece'] = 'k';
 				$movesArray[$i]['extra'] = 'O-O';
@@ -559,11 +559,11 @@ function packFEN($xFEN)
 			$count++; // count it
 
 		// or if we have not reached any empty spaces yet...
-		else if (0 == $count)
+		elseif (0 == $count)
 			$FENpack .= $c; // append the character to the end of the FEN
 
 		// or if we have counted empty spaces then reach the end of them
-		else if (0 != $count && '0' != $c)
+		elseif (0 != $count && '0' != $c)
 		{
 			$FENpack .= $count . $c; // append the count number and the next character to the FEN
 			$count = 0; // and reset the count var
@@ -649,7 +649,7 @@ function movetoFEN( )
 				FENplace($xFEN,2 + 56,'K'); // place the king
 				FENplace($xFEN,3 + 56,'R'); // place the rook
 			}
-			else if ('h' == $_POST['castleMove'])
+			elseif ('h' == $_POST['castleMove'])
 			{
 				FENplace($xFEN,$origKingPos + 56,'0'); // delete the king
 				FENplace($xFEN,$origHRookPos + 56,'0'); // delete the rook
@@ -661,7 +661,7 @@ function movetoFEN( )
 				die("castleMove is incorrect");
 			}
 		}
-		else if ('black' == $pieceColor[$piece]) // black
+		elseif ('black' == $pieceColor[$piece]) // black
 		{
 			// clear the castle indicators
 			$BK = '';
@@ -675,7 +675,7 @@ function movetoFEN( )
 				FENplace($xFEN,2,'k'); // place the king
 				FENplace($xFEN,3,'r'); // place the rook
 			}
-			else if ('h' == $_POST['castleMove'])
+			elseif ('h' == $_POST['castleMove'])
 			{
 				FENplace($xFEN,$origKingPos,'0'); // delete the king
 				FENplace($xFEN,$origHRookPos,'0'); // delete the rook
@@ -717,22 +717,22 @@ function movetoFEN( )
 		{
 			$WK = '';$WQ = '';
 		}
-		else if ('k' == $piece) // black king moved
+		elseif ('k' == $piece) // black king moved
 		{
 			$BK = '';$BQ = '';
 		}
-		else if ('R' == $piece) // white rook moved
+		elseif ('R' == $piece) // white rook moved
 		{
 			if ($colFrom == $origARookPos) // a-side moved
 				$WQ = '';
-			else if ($colFrom == $origHRookPos) // h-side moved
+			elseif ($colFrom == $origHRookPos) // h-side moved
 				$WK = '';
 		}
-		else if ('r' == $piece) // black rook moved
+		elseif ('r' == $piece) // black rook moved
 		{
 			if ($colFrom == $origARookPos) // a-side moved
 				$BQ = '';
-			else if ($colFrom == $origHRookPos) // h-side moved
+			elseif ($colFrom == $origHRookPos) // h-side moved
 				$BK = '';
 		}
 	}

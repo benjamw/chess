@@ -318,7 +318,7 @@ function getPGN( )
 				$body .= $bodyLine . "\n";
 				$bodyLine = '';
 		}
-		else if ( strlen($bodyLine) > 0 )
+		elseif ( strlen($bodyLine) > 0 )
 		{
 				$bodyLine .= ' ';
 		}
@@ -340,18 +340,18 @@ function getPGN( )
 	{
 		if ('Player Resigned' == $message['g_game_message']) // losing messages
 			$result = '0-1';
-		else if ('Checkmate' == $message['g_game_message']) // winning messages
+		elseif ('Checkmate' == $message['g_game_message']) // winning messages
 			$result = '1-0';
-		else if ('Draw' == $message['g_game_message']) // draw messages
+		elseif ('Draw' == $message['g_game_message']) // draw messages
 			$result = '1/2-1/2';
 	}
-	else if ('black' == $message['g_message_from'])
+	elseif ('black' == $message['g_message_from'])
 	{
 		if ('Player Resigned' == $message['g_game_message']) // losing messages
 			$result = '1-0';
-		else if ('Checkmate' == $message['g_game_message']) // winning messages
+		elseif ('Checkmate' == $message['g_game_message']) // winning messages
 			$result = '0-1';
-		else if ('Draw' == $message['g_game_message']) // draw messages
+		elseif ('Draw' == $message['g_game_message']) // draw messages
 			$result = '1/2-1/2';
 	}
 	else
@@ -361,7 +361,7 @@ function getPGN( )
 
 	if ( ( strlen($bodyLine) + strlen($result) ) > 79 )
 		$body .= "\n";
-	else if ( strlen($bodyLine) > 0 )
+	elseif ( strlen($bodyLine) > 0 )
 		$body .= ' ';
 
 	$body .= $result . "\n";
@@ -401,7 +401,7 @@ function getMovesVerbous( )
 		{
 			if ('check' == $move['check'])
 				$chk = ", check";
-			else if ('mate' == $move['check'])
+			elseif ('mate' == $move['check'])
 				$chk = ", checkmate";
 		}
 
@@ -413,7 +413,7 @@ function getMovesVerbous( )
 			else
 				$moves[floor($i / 2)][$i % 2] = 'castle h-side' . $chk; // just display the castle notation
 		}
-		else if (isset($move['extra']) && 'ep' == $move['extra']) // it's an en passant move
+		elseif (isset($move['extra']) && 'ep' == $move['extra']) // it's an en passant move
 			$moves[floor($i / 2)][$i % 2] = $piece . ' from ' . $sqFrom . $mid . $sqTo . ' en passant' . $chk; // display it
 		else // it's a normal move
 			$moves[floor($i / 2)][$i % 2] = $piece . ' from ' . $sqFrom . $mid . $sqTo . $pro . $chk; // display it
@@ -444,14 +444,14 @@ function getMovesCoordinate( )
 		{
 			if ('check' == $move['check'])
 				$chk = '+';
-			else if ('mate' == $move['check'])
+			elseif ('mate' == $move['check'])
 				$chk = '#';
 		}
 
 		// if it's a castle move
 		if (isset($move['extra']) && 'ep' != $move['extra'])
 			$moves[floor($i / 2)][$i % 2] = $move['extra'] . $chk; // just display the castle notation
-		else if (isset($move['extra']) && 'ep' == $move['extra']) // it's an en passant move
+		elseif (isset($move['extra']) && 'ep' == $move['extra']) // it's an en passant move
 			$moves[floor($i / 2)][$i % 2] = $sqFrom . $mid . $sqTo . 'ep' . $chk; // display it
 		else // it's a normal move
 			$moves[floor($i / 2)][$i % 2] = $sqFrom . $mid . $sqTo . $pro . $chk; // display it
@@ -486,14 +486,14 @@ function getMovesAlg( )
 		{
 			if ('check' == $move['check'])
 				$chk = '+';
-			else if ('mate' == $move['check'])
+			elseif ('mate' == $move['check'])
 				$chk = '#';
 		}
 
 		// if it's a castle move
 		if (isset($move['extra']) && 'ep' != $move['extra'])
 			$moves[floor($i / 2)][$i % 2] = $move['extra'] . $chk; // just display the castle notation
-		else if (isset($move['extra']) && 'ep' == $move['extra']) // it's an en passant move
+		elseif (isset($move['extra']) && 'ep' == $move['extra']) // it's an en passant move
 			$moves[floor($i / 2)][$i % 2] = $piece . $sqFrom . $mid . $sqTo . 'ep' . $chk; // display it
 		else // it's a normal move
 			$moves[floor($i / 2)][$i % 2] = $piece . $sqFrom . $mid . $sqTo . $pro . $chk; // display it
@@ -572,13 +572,13 @@ function getMovesLongAlg($last = false)
 		{
 			if ('check' == $move['check'])
 				$chk = '+';
-			else if ('mate' == $move['check'])
+			elseif ('mate' == $move['check'])
 				$chk = '#';
 		}
 
 		if (isset($move['extra']) && 'ep' != $move['extra']) // if it's a castle move
 			$moves[floor($i / 2)][$i % 2] = $move['extra'] . $chk; // just display the castle notation
-		else if (isset($move['extra']) && 'ep' == $move['extra']) // if it's an en passant move
+		elseif (isset($move['extra']) && 'ep' == $move['extra']) // if it's an en passant move
 			$moves[floor($i / 2)][$i % 2] = $piece . $sqFrom . $mid . $sqTo . 'ep' . $chk; // display it
 		else // if it's a normal move
 			$moves[floor($i / 2)][$i % 2] = $piece . $sqFrom . $mid . $sqTo . $pro . $chk; // display it

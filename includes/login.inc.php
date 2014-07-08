@@ -89,7 +89,7 @@ if (isset($_SESSION['player_id']) && ! isset($_POST['login']) && ('WebChess2-'.$
 	$refreshPlayer = true;
 }
 // or if we have a cookie, log in using the cookie data
-else if (isset($_COOKIE['WebChessData']) && ('DELETED!' != $_COOKIE['WebChessData']) && ! isset($_POST['login']))
+elseif (isset($_COOKIE['WebChessData']) && ('DELETED!' != $_COOKIE['WebChessData']) && ! isset($_POST['login']))
 {
 	call('COOKIE LOGIN');
 	$data  = base64_decode($_COOKIE['WebChessData']);
@@ -134,7 +134,7 @@ else if (isset($_COOKIE['WebChessData']) && ('DELETED!' != $_COOKIE['WebChessDat
 	}
 }
 // if somebody is trying to log in
-else if (isset($_POST['token']))
+elseif (isset($_POST['token']))
 {
 	call('REGULAR LOGIN');
 

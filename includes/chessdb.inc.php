@@ -75,7 +75,7 @@ function checkDatabase( )
 			adjust_stats($white_id, $black_id, 0, 1);
 		}
 	}
-	else if (gsStalemate == $state && 'Draw' != $message)
+	elseif (gsStalemate == $state && 'Draw' != $message)
 	{
 		$query = "
 			UPDATE ".T_GAME."
@@ -233,7 +233,7 @@ function saveGame( )
 
 		adjust_stats($_SESSION[$playerMoved]['p_id'], $_SESSION[$otherPlayer]['p_id'], 0.5, 0.5);
 	}
-	else if (gsMate == $state)
+	elseif (gsMate == $state)
 	{
 		$query = "
 			UPDATE ".T_GAME."

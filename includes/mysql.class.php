@@ -798,19 +798,19 @@ class mysql
 				$this->line = $arg;
 				if ($this->super_debug) echo $this->line;
 			}
-			else if (('/' == substr($arg, 0, 1)) || (0 != preg_match('/^\\w:/', $arg))) // the string begins with '/' or a drive letter
+			elseif (('/' == substr($arg, 0, 1)) || (0 != preg_match('/^\\w:/', $arg))) // the string begins with '/' or a drive letter
 			{
 				if ($this->super_debug) echo 'FILE - ';
 				$this->file_name = substr($arg, strpos($arg, FILE_PATH_END));
 				if ($this->super_debug) echo $this->file_name;
 			}
-			else if (is_string($arg) && (0 != strlen($arg)) && (false === strpos($arg, ' '))) // there are no spaces
+			elseif (is_string($arg) && (0 != strlen($arg)) && (false === strpos($arg, ' '))) // there are no spaces
 			{
 				if ($this->super_debug) echo 'DATABASE - ';
 				$this->db = $arg;
 				if ($this->super_debug) echo $this->db;
 			}
-			else if (0 != preg_match('/^\\s*(SELECT|INSERT|UPDATE|DELETE|DROP|DESC|REPLACE|CREATE|ALTER|ANALYZE|BACKUP|CACHE|CHANGE|CHECK|COMMIT|DEALLOCATE|DO|EXECUTE|EXPLAIN|FLUSH|GRANT|HANDLER|HELP|KILL|LOAD|LOCK|MASTER|OPTIMIZE|PREPARE|PURGE|RENAME|REPAIR|RESET|RESTORE|REVOKE|ROLL|SAVE|SET|SHOW|START|STOP|TRUNCATE|UNLOCK|USE)/i', $arg)) // it begins with a query word
+			elseif (0 != preg_match('/^\\s*(SELECT|INSERT|UPDATE|DELETE|DROP|DESC|REPLACE|CREATE|ALTER|ANALYZE|BACKUP|CACHE|CHANGE|CHECK|COMMIT|DEALLOCATE|DO|EXECUTE|EXPLAIN|FLUSH|GRANT|HANDLER|HELP|KILL|LOAD|LOCK|MASTER|OPTIMIZE|PREPARE|PURGE|RENAME|REPAIR|RESET|RESTORE|REVOKE|ROLL|SAVE|SET|SHOW|START|STOP|TRUNCATE|UNLOCK|USE)/i', $arg)) // it begins with a query word
 			{
 				if ($this->super_debug) echo 'QUERY - ';
 				$this->pass_query = $arg;

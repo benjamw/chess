@@ -230,7 +230,7 @@ while ('DONE' != $pgn)
 			echo "<hr />";
 		}
 	}
-	else if ('O' == $piece) // castling move
+	elseif ('O' == $piece) // castling move
 	{
 		// set the vars based on color
 		if ('w' == $color) // white move
@@ -516,7 +516,7 @@ function findKnights($tilTo,$ambFrom)
 			}
 		}
 	}
-	else if (1 < count($found))
+	elseif (1 < count($found))
 		die("Ambiguous Knight move found");
 	else
 		til2rowcol($found[0],$rowFrom,$colFrom);
@@ -570,7 +570,7 @@ function findPieces($tilTo,$m,$PIECE,$ambFrom)
 				$found[] = $tilFrom;
 				break; // searching this path no longer required
 			}
-			else if ('1' != $board[$row][$col]) // another piece was found and jumping is not allowed
+			elseif ('1' != $board[$row][$col]) // another piece was found and jumping is not allowed
 				break; // searching this path no longer required
 		}
 	}
@@ -587,7 +587,7 @@ function findPieces($tilTo,$m,$PIECE,$ambFrom)
 			}
 		}
 	}
-	else if (1 < count($found))
+	elseif (1 < count($found))
 		die("Ambiguous {$PIECE} move found");
 	else
 		til2rowcol($found[0],$rowFrom,$colFrom);
@@ -606,7 +606,7 @@ function findPieces($tilTo,$m,$PIECE,$ambFrom)
 			$var = $var . 'Q';
 			$$var = ''; // remove the castle indicator
 		}
-		else if ($ROW == $rowFrom && $colFrom == $origHRookPos)
+		elseif ($ROW == $rowFrom && $colFrom == $origHRookPos)
 		{
 			$var = $var . 'K';
 			$$var = '';
@@ -652,11 +652,11 @@ function board2FEN($board, &$FENbit)
 			$count++; // count it
 
 		// or if we have not reached any empty spaces yet...
-		else if (0 == $count)
+		elseif (0 == $count)
 			$FENbit .= $c; // append the character to the end of the FEN
 
 		// or if we have counted empty spaces then reach the end of them
-		else if (0 != $count && '1' != $c)
+		elseif (0 != $count && '1' != $c)
 		{
 			$FENbit .= $count . $c; // append the count number and the next character to the FEN
 			$count = 0; // and reset the count var

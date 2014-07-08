@@ -237,7 +237,7 @@ function get_game_table($label, $no_data_label, $data, $type = 'full')
 									$link = ' onclick="loadGame('.$game['g_id'].');"';
 									$white = ' class="notice"';
 								}
-								else if ($game['g_black_player_id'] == $_SESSION['player_id'])
+								elseif ($game['g_black_player_id'] == $_SESSION['player_id'])
 								{
 									$link = ' onclick="loadGame('.$game['g_id'].');"';
 									$black = ' class="notice"';
@@ -253,12 +253,12 @@ function get_game_table($label, $no_data_label, $data, $type = 'full')
 									{
 										$result = '½-½';
 									}
-									else if ('Player Resigned' == $game['g_game_message'])
+									elseif ('Player Resigned' == $game['g_game_message'])
 									{
 										$result  = ('white' == $game['g_message_from']) ? '0-1' : '1-0';
 										$result .= ' <abbr title="Resignation">R</abbr>';
 									}
-									else if ('Checkmate' == $game['g_game_message'])
+									elseif ('Checkmate' == $game['g_game_message'])
 									{
 										$result  = ('white' == $game['g_message_from']) ? '1-0' : '0-1';
 										$result .= ' <abbr title="Checkmate">CM</abbr>';
@@ -307,7 +307,7 @@ function get_game_table($label, $no_data_label, $data, $type = 'full')
 							if ($myturn && $alt) {
 								$class .= 'myturn alt';
 							}
-							else if ($alt) {
+							elseif ($alt) {
 								$class .= 'alt';
 							}
 							else {

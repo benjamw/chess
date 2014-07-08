@@ -616,7 +616,7 @@ switch ($page)
 						('{$game['id']}', '{$game['days']}', '{$game['moves']}')
 				";
 			}
-			else if ($curstats[$game['id']]['moves'] != $game['moves'] || $curstats[$game['id']]['days'] != $game['days'])
+			elseif ($curstats[$game['id']]['moves'] != $game['moves'] || $curstats[$game['id']]['days'] != $game['days'])
 			{
 				$query = "
 					UPDATE ".T_STAT."
