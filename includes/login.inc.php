@@ -63,22 +63,14 @@ if (isset($_POST['register']))
 	// set the session var so we get logged in below
 	$_SESSION['player_id'] = $mysql->fetch_insert_id( );
 
-	// add a welcome message for the new user
-	$query = "
-		INSERT
-		INTO ".T_TALK."
-		SET t_from_player_id = 1
-			, t_to_player_id = '{$_SESSION['player_id']}'
-			, t_subject = 'Welcome to WebChess 2.0'
-			, t_text = 'Welcome to WebChess 2.0\n\nIf you find any bugs, PLEASE send an email to me at benjam@iohelix.net as soon as possible detailing what happened and what went wrong so I can fix it.\n\nNow, please take a moment to familiarize yourself with the menu, and adjust your preferences to your liking.\nWhen that is all done, invite a fellow player to play a game, because well, that\'s what we\'re all here for!\n\nAgain, Welcome\n  --WebChess Administration'
-			, t_post_date = NOW( )
-	";
-	$mysql->query($query, __LINE__, __FILE__);
+	// add all global messages for user
+	$Message = new Message($_SESSION['player_id']);
+	$Message->grab_global_messages( );
 }
 
 
 // if we are already logged in, and there is nobody attempting to log in...
-if (isset($_SESSION['player_id']) && ! isset($_POST['login']) && ('WebChess2-'.$CFG_SITENAME.'-'.$CFG_MAINPAGE == $_SESSION['GAME']))
+if (isset($_SESSION['player_id']) && ! isset($_POST['login']) && ( ! empty($_SESSION['GAME']) && ('WebChess2-'.$CFG_SITENAME.'-'.$CFG_MAINPAGE == $_SESSION['GAME'])))
 {
 	call('REFRESH LOGIN');
 	// just refresh the session data with the (possibly new) database data
