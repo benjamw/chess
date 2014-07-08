@@ -106,9 +106,9 @@ echo get_header(null, 'Login', $head_extra);
 		</div>
 		<div id="footerspacer">&nbsp;</div>
 		<div id="footer">
-			<p>WebChess 2.0.2, last updated January 3, 2008</p>
+			<p>WebChess 2.1.1, last updated July 7, 2014</p>
 			<p><a href="http://sourceforge.net/projects/webchess/">WebChess</a> is Free Software released under the GNU General Public License (GPL).</p>
-			<p>For a copy of this version, please <a href="/contact/">contact me</a>.</p>
+			<p>For a copy of this version, please <a href="https://github.com/benjamw/chess">fork me on github</a>.</p>
 		</div>
 	</div>
 	<?php call($GLOBALS); ?>

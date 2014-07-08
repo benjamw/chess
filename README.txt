@@ -1,4 +1,4 @@
-To install WebChess 2.0.2
+To install WebChess 2.1.1
 
 There are several included 'themes' with this distribution
 please feel free to create your own, and either place it
