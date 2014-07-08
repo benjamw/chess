@@ -37,15 +37,15 @@
 		look inside the /css directory and you will find several css files with a
 		filename like c_{color_name}.css.  pick one, and enter that name here, or you can easily
 		create your own, using one of the included styles as a guide.
-		if you do create your own, please post it to my forum at http://iohelix.net/forum/
-		so that others may have access to it, and i may even include it with the next release.
+		if you do create your own, please add a pull request to my repo at
+		https://github.com/benjamw/chess/ so that others may have access to it.
 	*/
 
-	$CFG_COLOR_CSS      = 'c_red_black.css'; // the name of the color css file you wish to use (in the /css directory)
+	$CFG_COLOR_CSS      = 'c_green_black.css'; // the name of the color css file you wish to use (in the /css directory)
 
 	$CFG_MAINPAGE       = 'http://yoursite.com/webchess/'; // The home page of the webchess script (include closing / )
 
-	$CFG_SITENAME       = 'Your Site'; // The name of your website
+	$CFG_SITENAME       = 'Your Site Name'; // The name of your website
 
 	$CFG_SESSIONTIMEOUT = 0; // Number of minutes before session timeout (0 to disable)
 
@@ -57,7 +57,7 @@
 
 	$CFG_USEEMAIL       = true; // SMTP operations.  Test it before putting it into production
 
-	$CFG_MAILADDRESS    = 'your.mail@yoursite.com'; // Email address people see when receiving WebChess generated mail
+	$CFG_MAILADDRESS    = 'your.name@yoursite.com'; // Email address people see when receiving WebChess generated mail
 
 	$CFG_MAXUSERS       = 0; // Maximum number of users allowed (0 to disable)
 
@@ -83,7 +83,7 @@
 /* ---------------------------- */
 	define ('DB_ERR_EMAIL_ERRORS', true); // (true / false) set to true to email errors to TO address below
 	define ('DB_ERR_LOG_ERRORS'  , true); // (true / false) set to true to log errors in mysql.err file
-	define ('DB_ERR_TO'          , 'you@yoursite.com'); // set your TO email address
+	define ('DB_ERR_TO'          , 'your.name@yoursite.com'); // set your TO email address
 	define ('DB_ERR_SUBJECT'     , 'WebChess Query Error'); // don't really need to change this
 	define ('DB_ERR_FROM'        , $CFG_MAILADDRESS); // set your FROM email address (can be the same as TO above)
 	define ('DB_STATS_LOG'       , true); // (true / false) set to true to log query stats in mysql.err file (or database)
@@ -109,8 +109,8 @@ define('DEBUG', false); // set to true for output of debugging code
 
 if (defined('DEBUG') && DEBUG)
 {
-	ini_set('display_errors','On');
-	error_reporting(4095);
+	ini_set('display_errors', 'On');
+	error_reporting(E_ALL);
 	$mysql->error_debug = true; // Allows for error debug output
 	$mysql->query_debug = true; // Allows for output of all queries all the time
 	$mysql->super_debug = false; // Allows output of ALL debugging output
@@ -118,7 +118,7 @@ if (defined('DEBUG') && DEBUG)
 }
 else // do not edit the following
 {
-	ini_set('display_errors','Off');
+	ini_set('display_errors', 'Off');
 	error_reporting(0); // set to 0 when releasing to public
 	$mysql->error_debug = false; // Allows for error debug output
 	$mysql->query_debug = false; // Allows for output of all queries all the time
@@ -126,50 +126,51 @@ else // do not edit the following
 	define('JS_DEBUG', 0);
 }
 
-require_once('message.class.php');
-
-function call($var = '^^k8)SJ2di!U')
-{
-	if ( ! defined('DEBUG') || (false == DEBUG))
+if ( ! function_exists('call')) {
+	function call($var = '^^k8)SJ2di!U')
 	{
-		return false;
-	}
-
-	if ('^^k8)SJ2di!U' === $var)
-	{
-		echo '<span style="font-weight:bold;background:white;color:red;">*****</span>';
-	}
-	else
-	{
-		// begin output buffering so we can escape any html
-		ob_start( );
-
-		if (is_string($var) && isset($GLOBALS[$var]))
+		if ( ! defined('DEBUG') || (false == DEBUG))
 		{
-			echo '$' . $var . ' = ';
-			$var = $GLOBALS[$var];
+			return false;
 		}
 
-		if (is_bool($var) || is_null($var))
+		if ('^^k8)SJ2di!U' === $var)
 		{
-			var_dump($var);
+			echo '<span style="font-weight:bold;background:white;color:red;">*****</span>';
 		}
 		else
 		{
-			print_r($var);
+			// begin output buffering so we can escape any html
+			ob_start( );
+
+			if (is_string($var) && isset($GLOBALS[$var]))
+			{
+				echo '$' . $var . ' = ';
+				$var = $GLOBALS[$var];
+			}
+
+			if (is_bool($var) || is_null($var))
+			{
+				var_dump($var);
+			}
+			else
+			{
+				print_r($var);
+			}
+
+			// end output buffering and output the result
+			$contents = htmlentities(ob_get_contents( ));
+			ob_end_clean( );
+
+			echo '<pre style="background:#FFF;color:#000;font-size:larger;">'.$contents.'</pre>';
 		}
-
-		// end output buffering and output the result
-		$contents = htmlentities(ob_get_contents( ));
-		ob_end_clean( );
-
-		echo '<pre style="background:#FFF;color:#000;font-size:larger;">'.$contents.'</pre>';
 	}
 }
 
 require_once('func.array.php');
 require_once('func.bitwise.php');
 require_once('func.global.php');
+require_once('message.class.php');
 require_once('phpass.class.php');
 
 $CFG_SESSIONTIMEOUT *= 60; // convert minutes to seconds
