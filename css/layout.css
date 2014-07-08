@@ -455,10 +455,6 @@ table.moveList {
 
 #chessboard {
 	border: 2px solid #000; /* leave this here, it's required for the layout */
-	width: 1px;
-	height: 1px;
-}
-html[xmlns] #chessboard {
 	width: 450px !important;
 	height: 450px !important;
 }
@@ -481,25 +477,13 @@ html[xmlns] #chessboard {
 #theBoard .vert {
 	width: 25px !important;
 	height: 50px !important;
-	padding-top: 18px !important;
-}
-html[xmlns] #theBoard .vert {
-	height: 32px !important;
-}
-* html #theBoard .vert {
-	height: 32px !important;
+	line-height: 50px !important;
 }
 
 #theBoard .horz {
 	width: 50px !important;
 	height: 25px !important;
-	padding-top: 4px !important;
-}
-html[xmlns] #theBoard .horz {
-	height: 21px !important;
-}
-* html #theBoard .horz {
-	height: 21px !important;
+	line-height: 25px !important;
 }
 
 #theBoard .whitecorner {
