@@ -35,17 +35,17 @@ $html = '';
 foreach($dirlist as $dir)
 {
 	$html .= '<h2>'.$dir.'</h2>';
-	
+
 	foreach($colors as $color)
 	{
 		foreach($pieces as $piece)
 		{
 			$html .= '<img src="images/'.$dir.'/'.$color.'_'.$piece.'.gif" alt="'.ucfirst($color).' '.ucfirst($piece).'" />'."\n";
 		}
-		
+
 		$html .= '<br />';
 	}
-	
+
 	$html .= '<hr />';
 }
 

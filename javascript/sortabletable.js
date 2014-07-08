@@ -547,7 +547,7 @@ function usCurrencyConverter( s )
 	if ( i == -1 ) {
 		i = s.indexOf( ',' );
 	}
-	
+
 	if ( i != -1 ) {
 		var p1 = s.substr( 0, i );
 		var p2 = s.substr( i + 1, s.length );
@@ -645,7 +645,7 @@ function typedDate(subject)
 	var hour  = '00';
 	var min   = '00';
 	var sec   = '00';
-	
+
 	subject = subject.toLowerCase( )+' '; // add a trailing space (for the instance of "Jan 14", does not affect any others)
 
 	// grab the entire thing in one massive regex
@@ -677,7 +677,7 @@ function typedDate(subject)
 		'oct' : '10' , 'nov' : '11' , 'dec' : '12'
 	};
 	month = months[month];
-	
+
 	// make sure we have a month
 	if (null == month) {
 		month = '00';

@@ -24,11 +24,11 @@ if none of these is possible, isCheckMate( ) = true
 */
 
 /* directions:
-		0     1
+	0     1
  2  8  9 10  3
-	 15  * 11
+   15  * 11
  4 14 13 12  5
-		6     7
+	6     7
  NOTE: directions 0 through 7 are actually positions and represent knights!
 *****************************************************************************
 	END PSEUDOCODE

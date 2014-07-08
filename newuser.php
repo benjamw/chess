@@ -22,7 +22,7 @@ if (false == $CFG_NEWUSERS)
 }
 
 // set a token
-$_SESSION['token'] = md5(uniqid(rand( ),true));
+$_SESSION['token'] = md5(uniqid(rand( ), true));
 
 $head_extra = '
 	<script type="text/javascript">
