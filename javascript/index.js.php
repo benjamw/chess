@@ -31,15 +31,6 @@ function validatepersonal( )
 	// if both are blank, they are still equal
 	if (document.personal.pwdPassword.value == document.personal.pwdPassword2.value)
 	{
-		// make sure not to run the md5 sum if the passwords are blank... bad, very bad
-		if (document.personal.pwdPassword.value.substring(0,5) != '!md5!'
-			&& document.personal.pwdPassword.value != '')
-		{
-			document.personal.pwdOldPassword.value = '!md5!' + hex_md5(document.personal.pwdOldPassword.value);
-			document.personal.pwdPassword.value    = '!md5!' + hex_md5(document.personal.pwdPassword.value);
-			document.personal.pwdPassword2.value   = '!md5!' + hex_md5(document.personal.pwdPassword2.value);
-		}
-
 		document.personal.submit( );
 	}
 	else

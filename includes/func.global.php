@@ -61,3 +61,42 @@ function ifenr($var, $default = null) {
 	return $var;
 }
 
+
+
+/** function password_make
+ *		wrapper function for PasswordHash (PHPass)
+ *
+ * @param string password
+ * @return string hash
+ */
+function password_make($pass) {
+	// bcrypt only uses the first 72 characters,
+	// this also prevents DoS attacks
+	if (72 < strlen($pass)) {
+		return false;
+	}
+
+	$PH = new PasswordHash(8, false);
+	$hash = $PH->HashPassword($pass);
+
+	if (20 > strlen($hash)) {
+		return false;
+	}
+
+	return $hash;
+}
+
+
+
+/** function password_test
+ *		wrapper function for PasswordHash (PHPass)
+ *
+ * @param string password
+ * @param string hash
+ * @return bool valid password
+ */
+function password_test($pass, $hash) {
+	$PH = new PasswordHash(8, false);
+	return $PH->CheckPassword($pass, $hash);
+}
+

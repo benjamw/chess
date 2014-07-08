@@ -37,10 +37,12 @@ if (isset($_POST['register']))
 		exit( );
 	}
 
+	call(password_make($_POST['pwdPassword']));
+
 	$query = "
 		INSERT
 		INTO ".T_PLAYER."
-		SET p_password = '".sani(substr($_POST['pwdPassword'],5))."'
+		SET p_password = '".password_make($_POST['pwdPassword'])."'
 			, p_username = '".sani($_POST['txtUsername'])."'
 			, p_first_name = '".sani($_POST['txtFirstName'])."'
 			, p_last_name = '".sani($_POST['txtLastName'])."'
@@ -162,7 +164,7 @@ else // we need to log in
 }
 
 // just refresh, OR log us in if such a player exists and password is good... otherwise die
-if (isset($refreshPlayer) || ((false !== $player) && ($player['p_password'] == substr($_POST['pwdPassword'], 5))))
+if (isset($refreshPlayer) || ((false !== $player) && password_test($_POST['pwdPassword'], $player['p_password'])))
 {
 	$_SESSION['GAME'] = 'WebChess2-'.$CFG_SITENAME.'-'.$CFG_MAINPAGE; // prevent cross script session stealing due to refresh login
 	$_SESSION['player_id'] = $player['p_id'];

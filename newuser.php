@@ -25,7 +25,6 @@ if (false == $CFG_NEWUSERS)
 $_SESSION['token'] = md5(uniqid(rand( ),true));
 
 $head_extra = '
-	<script type="text/javascript" src="javascript/md5.js"></script>
 	<script type="text/javascript">
 		function validateForm( )
 		{
@@ -43,11 +42,6 @@ $head_extra = '
 			// if both are blank, they are still equal
 			if (document.userdata.pwdPassword.value == document.userdata.pwdPassword2.value)
 			{
-				if (document.userdata.pwdPassword.value.substring(0,5) != \'!md5!\')
-				{
-					document.userdata.pwdPassword.value = \'!md5!\' + hex_md5(document.userdata.pwdPassword.value);
-					document.userdata.pwdPassword2.value = \'!md5!\' + hex_md5(document.userdata.pwdPassword2.value);
-				}
 				return true;
 			}
 			else

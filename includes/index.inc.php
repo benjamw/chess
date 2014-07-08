@@ -1040,9 +1040,10 @@ switch ($page)
 				foreach ( $_POST['resetpass'] as $user )
 				{
 					// reset the password to change!me
+					$pass = password_make('change!me');
 					$query = "
 						UPDATE ".T_PLAYER."
-						SET p_password = MD5('change!me')
+						SET p_password = '{$pass}'
 						WHERE p_id = '{$user}'
 						LIMIT 1
 					";

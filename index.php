@@ -756,7 +756,6 @@ $head_extra = '
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="javascript/sortabletable.js"></script>
 	<script type="text/javascript" src="javascript/messages.js"></script>
-	<script type="text/javascript" src="javascript/md5.js"></script>
 	<script type="text/javascript" src="javascript/index.js.php"></script>
 ';
 

@@ -80,21 +80,6 @@ if ( $isInvalidPassword )
 	$errMsg = "!! ERROR !!<br />Invalid Password. Try again.";
 }
 
-$head_extra = '
-	<script type="text/javascript" src="javascript/md5.js"></script>
-	<script type="text/javascript">
-			function md5pass( )
-			{
-				var passbox = document.getElementById(\'pwdPassword\');
-
-				if (passbox.value.substring(0,5) != \'!md5!\')
-				{
-					passbox.value = \'!md5!\' + hex_md5(passbox.value);
-				}
-			}
-	</script>
-';
-
 echo get_header(null, 'Opponent Login', $head_extra);
 
 
@@ -107,7 +92,7 @@ echo get_header(null, 'Opponent Login', $head_extra);
 			<div id="date"><?php echo date($CFG_LONGDATE); ?></div>
 			<p>Here your opponent can input thier password to enable you to both play on the same computer.</p>
 		</div>
-		<form id="content" action="opppass.php" method="post" name="form" onsubmit="md5pass( );">
+		<form id="content" action="opppass.php" method="post" name="form">
 				<h2>Enter password for <?php echo $opponentsUsername; ?></h2>
 				<input type="password" name="pwdPassword" id="pwdPassword" class="inputbox" /> Password<br />
 				<input type="hidden" name="opponentsUsername" value="<?php echo $opponentsUsername; ?>" />

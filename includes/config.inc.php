@@ -170,6 +170,7 @@ function call($var = '^^k8)SJ2di!U')
 require_once('func.array.php');
 require_once('func.bitwise.php');
 require_once('func.global.php');
+require_once('phpass.class.php');
 
 $CFG_SESSIONTIMEOUT *= 60; // convert minutes to seconds
 

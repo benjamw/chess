@@ -67,21 +67,11 @@ $numPlayers = $mysql->fetch_value($query, __LINE__, __FILE__);
 $_SESSION['token'] = md5(uniqid(rand( ), true));
 
 $head_extra = '
-	<script type="text/javascript" src="javascript/md5.js"></script>
 	<script type="text/javascript">
 		window.onload = function( )
 		{
 			document.loginForm.txtUsername.focus( );
 			document.loginForm.txtUsername.select( );
-		}
-		function md5pass( )
-		{
-			var passbox = document.getElementById(\'pwdPassword\');
-
-			if (passbox.value.substring(0,5) != \'!md5!\')
-			{
-				passbox.value = \'!md5!\' + hex_md5(passbox.value);
-			}
 		}
 	</script>
 ';
@@ -99,7 +89,7 @@ echo get_header(null, 'Login', $head_extra);
 			<noscript class="notice ctr">
 				Warning! Javascript must be enabled for proper operation of WebChess.
 			</noscript>
-			<form name="loginForm" id="loginForm" method="post" action="index.php" onsubmit="md5pass( );">
+			<form name="loginForm" id="loginForm" method="post" action="index.php">
 				<input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
 				<input id="txtUsername" name="txtUsername" type="text" class="inputbox" size="15" maxlength="20" /> Username<br />
 				<input id="pwdPassword" name="pwdPassword" type="password" class="inputbox" size="15" /> Password<br />
