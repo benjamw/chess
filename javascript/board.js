@@ -106,7 +106,7 @@ function displayCaptPieces( )
 		for(j = 0; j < captPieces[i].length; j++)
 		{
 			piece = color + '_' + captPieces[i][j];
-			html += '<img src="images/' + currentTheme + '/' + piece + '.gif" width="';
+			html += '<img src="images/' + currentTheme + '/' + piece + '.' + ((-1 !== currentTheme.indexOf('gnuchess')) ? 'png' : 'gif') + '" width="';
 			html += parseInt(50 * 3 / 5) + '" height="' + parseInt(50 * 3 / 5) + '" alt="' + piece + '" />';
 		}
 
@@ -411,7 +411,7 @@ function htmlBoard( )
 		if(board[row][col] != 0)
 		{
 			piece = getPieceColor(board[row][col]) + '_' + getPieceName(board[row][col]);
-			source = 'images/' + currentTheme + '/' + piece + '.gif'; // Update the square
+			source = 'images/' + currentTheme + '/' + piece + '.' + ((-1 !== currentTheme.indexOf('gnuchess')) ? 'png' : 'gif'); // Update the square
 			theBoard += '<img alt="' + piece + '" id="sq' + i + '" ';
 			theBoard += 'src="' + source + '" width="50" height="50" />';
 		}
