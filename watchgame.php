@@ -48,9 +48,9 @@ if (isset($_GET['file']))
 else // we are not loading a PGN file
 {
 	// check if loading game
-	if ( isset($_POST['game_id']) )
+	if ( isset($_REQUEST['game_id']) )
 	{
-		$_SESSION['game_id'] = $_POST['game_id'];
+		$_SESSION['game_id'] = $_REQUEST['game_id'];
 	}
 
 	// get FEN array
