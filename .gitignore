@@ -5,6 +5,7 @@
 
 *.epp
 *.err
+*.log
 
 .svn
 
@@ -12,8 +13,8 @@
 /pgn/*
 /logs/*
 
-/includes/config.php
+/includes/config.inc.php
 /scripts/ba-debug.js
 
 !/logs/.htaccess
-
+!/pgn/index.php
