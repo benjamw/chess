@@ -38,3 +38,4 @@ To update from previous v1.0 RX versions
 
 I'm sorry but there is no update script available at this time.
 
+WebChess is released under the GPLv3.
