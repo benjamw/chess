@@ -180,13 +180,6 @@ if (isset($refreshPlayer) || ((false !== $player) && password_test($_POST['pwdPa
 	$_SESSION['pref_show_last_move'] = ( "1" == $player['p_show_last_move'] ) ? true : false;
 	$_SESSION['is_admin'] = ( $CFG_ROOT_ADMIN == $player['p_username'] || "1" == $player['p_is_admin'] ) ? true : false;
 
-	$query = "
-		UPDATE ".T_PLAYER."
-		SET p_last_login = NOW( )
-		WHERE p_id = '{$player['p_id']}'
-	";
-#	$mysql->query($query, __LINE__, __FILE__);
-
 	// only regenerate the security info if we are loggin in
 	// if it's a refresh login, skip this step
 	if (isset($_POST['remember']) && ('' != $_POST['remember']))
