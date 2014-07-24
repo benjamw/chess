@@ -39,7 +39,7 @@ $parts = pathinfo($_SERVER['REQUEST_URI']);
 
 $path = $parts['dirname'];
 if (empty($parts['extension'])) {
-	$path .= $parts['basename'];
+	$path .= '/'.$parts['basename'];
 }
 $path = str_replace('\\', '/', $path).'/';
 
