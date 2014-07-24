@@ -100,3 +100,45 @@ function password_test($pass, $hash) {
 	return $PH->CheckPassword($pass, $hash);
 }
 
+
+
+/** function call
+ *		simple configurable debugging output
+ *
+ * @param optional mixed
+ * @return void
+ */
+if ( ! function_exists('call')) {
+	function call($var = '^^k8)SJ2di!U') {
+		if ( ! defined('DEBUG') || (false == DEBUG)) {
+			return;
+		}
+
+		if ('^^k8)SJ2di!U' === $var) {
+			echo '<span style="font-weight:bold;background:white;color:red;">*****</span>';
+		}
+		else {
+			// begin output buffering so we can escape any html
+			ob_start( );
+
+			if (is_string($var) && isset($GLOBALS[$var])) {
+				echo '$' . $var . ' = ';
+				$var = $GLOBALS[$var];
+			}
+
+			if (is_bool($var) || is_null($var)) {
+				var_dump($var);
+			}
+			else {
+				print_r($var);
+			}
+
+			// end output buffering and output the result
+			$contents = htmlentities(ob_get_contents( ));
+			ob_end_clean( );
+
+			echo '<pre style="background:#FFF;color:#000;font-size:larger;">'.$contents.'</pre>';
+		}
+	}
+}
+
