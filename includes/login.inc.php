@@ -146,6 +146,14 @@ elseif (isset($_POST['token']))
 		WHERE p_username = '".sani($_POST['txtUsername'])."'
 	";
 	$player = $mysql->fetch_assoc($query, __LINE__, __FILE__);
+
+	// check for an old password and update if needed
+	if ((false !== $player) && (32 === strlen($player['p_password']))) {
+		if (md5($_POST['pwdPassword']) === $player['p_password']) {
+			$player['p_password'] = password_make($_POST['pwdPassword']);
+			$mysql->insert(T_PLAYER, array('p_password' => $player['p_password']), " WHERE `p_id` = '{$player['p_id']}' ");
+		}
+	}
 }
 else // we need to log in
 {
