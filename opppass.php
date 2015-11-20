@@ -34,7 +34,7 @@ if ( isset($_POST['opponentsID']) )
 	$dbPassword = $mysql->fetch_value($query, __LINE__, __FILE__);
 
 	/* check to see if supplied password matched that of the DB */
-	if ($dbPassword == substr($_POST['pwdPassword'],5))
+	if (password_test($_POST['pwdPassword'], $dbPassword))
 	{
 		$_SESSION['shared'] = true;
 		$_SESSION['game_id'] = $_POST['game_id'];

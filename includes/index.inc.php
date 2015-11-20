@@ -917,7 +917,7 @@ switch ($page)
 			";
 			$dbPassword = $mysql->fetch_value($query, __LINE__, __FILE__);
 
-			if ((isset($_POST['pwdPassword']) && ('' != $_POST['pwdPassword'])) && ($dbPassword != substr($_POST['pwdOldPassword'],5)))
+			if ((isset($_POST['pwdPassword']) && ('' != $_POST['pwdPassword'])) && ! password_test($_POST['pwdOldPassword'], $dbPassword))
 			{
 				$errMsg = "Sorry, incorrect old password!";
 			}
@@ -957,7 +957,7 @@ switch ($page)
 
 					if (isset($_POST['pwdPassword']) && ('' != $_POST['pwdPassword']))
 					{
-						$query .= " , p_password = '".substr($_POST['pwdPassword'],5)."' "; // continued...
+						$query .= " , p_password = '".password_make($_POST['pwdPassword'])."' "; // continued...
 					}
 
 					if ((false != $CFG_CHANGEUSERNAME) && ('' != $_POST['txtUsername']))
