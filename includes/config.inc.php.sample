@@ -110,20 +110,11 @@ define('DEBUG', false); // set to true for output of debugging code
 if (defined('DEBUG') && DEBUG)
 {
 	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
+	error_reporting(-1);
 	$mysql->error_debug = true; // Allows for error debug output
 	$mysql->query_debug = true; // Allows for output of all queries all the time
 	$mysql->super_debug = false; // Allows output of ALL debugging output
 	define('JS_DEBUG', 0); // set to 1 for really annoying jvascript debug
-}
-else // do not edit the following
-{
-	ini_set('display_errors', 'Off');
-	error_reporting(0); // set to 0 when releasing to public
-	$mysql->error_debug = false; // Allows for error debug output
-	$mysql->query_debug = false; // Allows for output of all queries all the time
-	$mysql->super_debug = false; // Allows output of ALL debugging output
-	define('JS_DEBUG', 0);
 }
 
 require_once('func.global.php');
