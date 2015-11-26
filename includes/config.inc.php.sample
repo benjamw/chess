@@ -106,6 +106,7 @@ $mysql->connect_select(__LINE__,__FILE__);
 $chess = new ChessGame( );
 
 define('DEBUG', false); // set to true for output of debugging code
+define('JS_DEBUG', 0); // set to 1 for really annoying jvascript debug
 
 if (defined('DEBUG') && DEBUG)
 {
@@ -114,7 +115,6 @@ if (defined('DEBUG') && DEBUG)
 	$mysql->error_debug = true; // Allows for error debug output
 	$mysql->query_debug = true; // Allows for output of all queries all the time
 	$mysql->super_debug = false; // Allows output of ALL debugging output
-	define('JS_DEBUG', 0); // set to 1 for really annoying jvascript debug
 }
 
 require_once('func.global.php');
